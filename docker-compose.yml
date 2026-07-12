@@ -1,0 +1,38 @@
+services:
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: open-webui
+    restart: unless-stopped
+
+    ports:
+      - "8180:8080"
+
+    environment:
+      OLLAMA_BASE_URL: http://host.docker.internal:11434
+
+    volumes:
+      - ./data/open-webui:/app/backend/data
+
+    depends_on:
+      searxng:
+        condition: service_healthy
+
+    extra_hosts:
+      - host.docker.internal:host-gateway
+
+  searxng:
+    image: searxng/searxng:latest
+    container_name: searxng
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:8080"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+    ports:
+      - "8181:8080"
+
+    volumes:
+      - ./data/searxng/config:/etc/searxng
+      - ./data/searxng/data:/var/cache/searxng/
