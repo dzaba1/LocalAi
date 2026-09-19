@@ -4,7 +4,6 @@
 use_default_settings: true
 
 server:
-  secret_key: "CHANGE_ME"
   image_proxy: true
 
 search:
