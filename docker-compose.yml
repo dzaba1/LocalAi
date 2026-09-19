@@ -33,6 +33,9 @@ services:
     ports:
       - "8181:8080"
 
+    environment:
+      SEARXNG_SECRET: ${SEARXNG_SECRET}
+
     volumes:
       - ./data/searxng/config:/etc/searxng
       - ./data/searxng/data:/var/cache/searxng/
