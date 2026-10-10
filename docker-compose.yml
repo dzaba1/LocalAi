@@ -9,6 +9,9 @@ services:
 
     environment:
       OLLAMA_BASE_URL: http://host.docker.internal:11434
+      ENABLE_IMAGE_GENERATION: "true"
+      IMAGE_GENERATION_ENGINE: comfyui
+      COMFYUI_BASE_URL: http://host.docker.internal:8188
 
     volumes:
       - ./data/open-webui:/app/backend/data
