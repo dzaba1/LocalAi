@@ -22,3 +22,8 @@ Check these when working on ComfyUI configuration:
 
 - https://docs.comfy.org/
 - https://github.com/comfy-org/comfyui
+
+Check these when working on Ollama configuration:
+
+- https://docs.ollama.com/
+- https://github.com/ollama/ollama
